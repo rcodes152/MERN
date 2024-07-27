@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config(); // Moved to the top
 
+
 const authRoutes = require('./router/auth'); // Adjust the path as necessary
 const quizRoutes = require('./router/quiz'); // Require quizRoutes
 

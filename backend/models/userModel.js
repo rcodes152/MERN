@@ -28,7 +28,12 @@ const userSchema = new mongoose.Schema({
     score: {
         type: Number,
         default: 0, // Initial score
-    }
+    },
+    watchedVideos: [{
+        type:String,
+
+    }]
+
 }, { timestamps: true });
 
 // Encrypt password before saving the user
