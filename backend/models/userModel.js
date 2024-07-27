@@ -1,24 +1,50 @@
-const mongoose=require ("mongoose");
-const userModel= new mongoose.Schema ({
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+
+// Define the User schema
+const userSchema = new mongoose.Schema({
     name: {
-        type:String,
-        required:true,
+        type: String,
+        required: true,
     },
-    email:{
+    email: {
         type: String,
         unique: true,
         required: true,
     },
-    age:{
-        type:Number,
+    password: {
+        type: String,
+        required: true,
     },
-},{timestamps: true});
+    region: {
+        type: String,
+        required: true,
+    },
+    profession: {
+        type: String,
+        enum: ['Student', 'Others'],
+        required: true,
+    },
+    score: {
+        type: Number,
+        default: 0, // Initial score
+    }
+}, { timestamps: true });
 
-//create smodel
-const User=mongoose.model('User',userModel)
-module.exports=User;
+// Encrypt password before saving the user
+userSchema.pre('save', async function(next) {
+    if (!this.isModified('password')) {
+        return next();
+    }
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+});
 
+// Create and export the User model
+const User = mongoose.model('User', userSchema);
 
+module.exports = User;
 
 
 
