@@ -53,9 +53,22 @@ router.post('/quiz/submit', async (req, res) => {
 
         // var objectId=mongoose.Types.ObjectId(userId)
         // Update the user's score
-        // await User.findByIdAndUpdate(objectId, { score: percentage }, { session });
+        // await User.findByIdAndUpdate(userId, { score: percentage }, { new:true },(err,UserUp)=>{
+        //     if(err){
+        //         console.error("Found error : ",err);
+        //     }
+        //     console.log("Updated : ",UserUp)
+        // });
 
-        const userObj=new User( { score: percentage }, { session })
+        const userObj=new User( { name: "Shravan V",
+            email: "demo@gmail.com",
+            password: "demo",
+            region: "India",
+            profession: "Student",
+            score: 12,
+            watchedVideos: ["Youtube"] });
+
+        await userObj.save();
 
         await session.commitTransaction();
         session.endSession();
@@ -67,6 +80,7 @@ router.post('/quiz/submit', async (req, res) => {
         console.error('Error submitting quiz answers:', err.message);
         res.status(500).send('Server error');
     }
+    
 });
 
 module.exports = router;

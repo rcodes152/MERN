@@ -50,7 +50,9 @@ const MCQForm = () => {
       selectedOption: answers[`q${index}`]
     }));
 
-    axios.post('http://localhost:5000/api/quiz/submit', { userId: 'test-user-id', answers: formattedAnswers })
+
+
+    axios.post('http://localhost:5000/api/quiz/submit', { userId: '12345677888626622', answers: formattedAnswers })
       .then(response => {
         console.log("hello",response)
         // Check if backend response contains score
