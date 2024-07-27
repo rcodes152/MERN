@@ -1,0 +1,47 @@
+.instructions-card {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Ensures the card has a white background */
+    text-align: center;
+    border: 1px solid #ddd; /* Optional: adds a light border around the card */
+}
+
+.instructions-card h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: yellowgreen;
+}
+
+.instructions-card p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.instructions-card ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.instructions-card ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.instructions-card .btn-primary {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.instructions-card .btn-primary:hover {
+    background-color: #0056b3;
+}

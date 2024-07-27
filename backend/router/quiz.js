@@ -18,6 +18,7 @@ router.get('/quiz', async (req, res) => {
 
 // Submit Quiz Answers
 router.post('/quiz/submit', async (req, res) => {
+    console.log("hello")
     const { userId, answers } = req.body;
     if (!userId || !answers) {
         return res.status(400).json({ message: 'User ID and answers are required.' });
@@ -50,8 +51,11 @@ router.post('/quiz/submit', async (req, res) => {
         });
         await assessment.save({ session });
 
+        // var objectId=mongoose.Types.ObjectId(userId)
         // Update the user's score
-        await User.findByIdAndUpdate(userId, { score: percentage }, { session });
+        // await User.findByIdAndUpdate(objectId, { score: percentage }, { session });
+
+        const userObj=new User( { score: percentage }, { session })
 
         await session.commitTransaction();
         session.endSession();

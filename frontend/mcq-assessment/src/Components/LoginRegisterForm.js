@@ -1,4 +1,6 @@
+// src/Components/LoginRegisterForm.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './LoginRegisterForm.css';
 
@@ -30,6 +32,7 @@ const LoginRegisterForm = () => {
         profession: '',
         ngoWork: ''
     });
+    const navigate = useNavigate(); // Hook for navigation
 
     const switchForm = () => {
         setIsLogin(!isLogin);
@@ -51,7 +54,8 @@ const LoginRegisterForm = () => {
                     password: formData.password
                 });
                 console.log('Login successful', response.data);
-                // Handle successful login (e.g., store token, redirect, etc.)
+                // Redirect to /blankpage after successful login
+                navigate('/blankpage');
             } catch (error) {
                 console.error('Error during login:', error.response?.data || error.message);
                 // Handle login error
@@ -62,6 +66,8 @@ const LoginRegisterForm = () => {
                 console.log('Registration successful', response.data);
                 // Automatically switch to login form after successful registration
                 switchForm();
+                // Redirect to login page after registration
+                navigate('/');
             } catch (error) {
                 console.error('Error during registration:', error.response?.data || error.message);
                 // Handle registration error
@@ -200,4 +206,3 @@ const LoginRegisterForm = () => {
 };
 
 export default LoginRegisterForm;
-
