@@ -1,0 +1,23 @@
+/* src/components/MainContent.css */
+
+.video-container h2 {
+    margin-bottom: 10px;
+    color: #b30000; 
+  }
+  
+  .video-container p {
+    margin-bottom: 20px;
+    color: #800000; 
+  }
+  
+  iframe {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .placeholder {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #6c757d;
+  }
+  

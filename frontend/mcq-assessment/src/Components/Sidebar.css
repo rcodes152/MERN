@@ -1,0 +1,19 @@
+/* src/components/Sidebar.css */
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #cc0000; /* darker red for borders */
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .sidebar li:hover {
+    background-color: #cc0000; /* darker red on hover */
+    color: #ffe6e6; /* very light red text on hover */
+  }
+  

@@ -53,77 +53,61 @@ const MCQForm = () => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', textAlign: 'center', backgroundColor: '#f9f9f9' }}>
-      <div style={{ width: '80%', maxWidth: '600px' }}>
-        <h1 style={{ marginBottom: '20px' }}>MCQ Assessment</h1>
-        {questions.length > 0 && (
-          <form onSubmit={handleSubmit}>
-            <div style={{ marginBottom: '20px', padding: '20px', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
-              <h3 style={{ marginBottom: '15px' }}>{questions[currentQuestionIndex].questionText}</h3>
-              {questions[currentQuestionIndex].options.map((option, i) => (
-                <div key={i} style={{ textAlign: 'left', marginBottom: '10px' }}>
-                  <input
-                    type="radio"
-                    id={`q${currentQuestionIndex}o${i}`}
-                    name={`q${currentQuestionIndex}`}
-                    value={option}
-                    checked={answers[`q${currentQuestionIndex}`] === option}
-                    onChange={handleChange}
-                    style={{ marginRight: '10px' }}
-                  />
-                  <label htmlFor={`q${currentQuestionIndex}o${i}`}>{option}</label>
-                </div>
-              ))}
-            </div>
-            <div style={{ marginTop: '20px' }}>
-              {currentQuestionIndex > 0 && (
-                <button 
-                  type="button" 
-                  onClick={handlePreviousQuestion}
-                  style={{ marginRight: '10px', padding: '10px 20px', border: 'none', borderRadius: '5px', backgroundColor: '#007bff', color: '#fff', cursor: 'pointer' }}
-                >
-                  Previous
-                </button>
-              )}
-              {currentQuestionIndex < questions.length - 1 && (
-                <button 
-                  type="button" 
-                  onClick={handleNextQuestion}
-                  style={{ marginRight: '10px', padding: '10px 20px', border: 'none', borderRadius: '5px', backgroundColor: '#007bff', color: '#fff', cursor: 'pointer' }}
-                >
-                  Next
-                </button>
-              )}
-              {currentQuestionIndex === questions.length - 1 && (
-                <button 
-                  type="submit"
-                  style={{ padding: '10px 20px', border: 'none', borderRadius: '5px', backgroundColor: '#28a745', color: '#fff', cursor: 'pointer' }}
-                >
-                  Submit
-                </button>
-              )}
-            </div>
-          </form>
-        )}
-        {score !== null && (
-          <div style={{ marginTop: '30px' }}>
-            <h2>Your Score:</h2>
-            <div style={{ width: '150px', height: '150px', margin: 'auto' }}>
-              <CircularProgressbar
-                value={score}
-                text={`${score}%`}
-                styles={buildStyles({
-                  strokeLinecap: 'round',
-                  textSize: '16px',
-                  pathColor: '#00aaff',
-                  textColor: '#00aaff',
-                  trailColor: '#d9d9d9',
-                })}
-              />
-            </div>
+    <div style={{ textAlign: 'center' }}>
+      <h1>MCQ Assessment</h1>
+      {questions.length > 0 && (
+        <form onSubmit={handleSubmit}>
+          <div style={{ marginBottom: '20px' }}>
+            <h3>{questions[currentQuestionIndex].questionText}</h3>
+            {questions[currentQuestionIndex].options.map((option, i) => (
+              <div key={i} style={{ textAlign: 'left' }}>
+                <input
+                  type="radio"
+                  id={`q${currentQuestionIndex}o${i}`}
+                  name={`q${currentQuestionIndex}`}
+                  value={option}
+                  checked={answers[`q${currentQuestionIndex}`] === option}
+                  onChange={handleChange}
+                />
+                <label htmlFor={`q${currentQuestionIndex}o${i}`}>{option}</label>
+              </div>
+            ))}
           </div>
-        )}
-      </div>
+          <div>
+            {currentQuestionIndex > 0 && (
+              <button type="button" onClick={handlePreviousQuestion}>
+                Previous
+              </button>
+            )}
+            {currentQuestionIndex < questions.length - 1 && (
+              <button type="button" onClick={handleNextQuestion}>
+                Next
+              </button>
+            )}
+            {currentQuestionIndex === questions.length - 1 && (
+              <button type="submit">Submit</button>
+            )}
+          </div>
+        </form>
+      )}
+      {score !== null && (
+        <div>
+          <h2>Your Score:</h2>
+          <div style={{ width: '150px', height: '150px', margin: 'auto' }}>
+            <CircularProgressbar
+              value={score}
+              text={`${score}%`}
+              styles={buildStyles({
+                strokeLinecap: 'round',
+                textSize: '16px',
+                pathColor: '#00aaff',
+                textColor: '#00aaff',
+                trailColor: '#d9d9d9',
+              })}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
